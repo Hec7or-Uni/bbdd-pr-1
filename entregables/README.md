@@ -1,0 +1,11 @@
+# Entregables
+- **Memória**
+	- Formato: `PDF`
+	- Max Pags: `20`
+- **Código**
+	- Formato: `.zip`
+	- Contenido: 
+		- sql
+			- ficheros `SQL` de `creación de tablas`, `inserción de tuplas`, `consultas`, `triggers` y `diseño físico` desarrollados para llevar a cabo la práctica
+		- scripts
+			- código fuente de los programas utilizados para la generación de los ficheros SQL.
