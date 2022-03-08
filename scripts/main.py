@@ -34,6 +34,8 @@ def getField(string: str, start, end) -> str:
         elif type(end) == None:
             return trim(string[start:])
         else:
+            # Avisa de que hay datos que estan vacios
+            if trim(string[start:end]).isspace(): print("Se ha detectado un dato vacio")
             return trim(string[start:end])
     except Exception as e:
         print(e)
