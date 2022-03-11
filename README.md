@@ -1,1 +1,1 @@
-![Modelo entidad relación](https://github.com/Hec7or-Uni/bbdd-pr-1/master/assets/entidadRelacion.jpg)
+![Modelo entidad relación](https://github.com/Hec7or-Uni/bbdd-pr-1/main/assets/entidadRelacion.jpg)
