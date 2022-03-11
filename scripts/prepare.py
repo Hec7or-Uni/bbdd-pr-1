@@ -1,3 +1,7 @@
+"""
+Script que extrae la informacion del fichero de texto LigaHost.txt y la guarda en formato csv y excel
+solucionando algunos problemas de formato que se encontraron al analizar el fichero LigaHost.txt
+"""
 import re
 import csv
 import pandas as pd

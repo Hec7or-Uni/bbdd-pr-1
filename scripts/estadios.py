@@ -1,3 +1,6 @@
+"""
+Scraping de la wiki para la obtencion de los estadios que se usaran para poblar la tabla de estadios
+"""
 from bs4 import BeautifulSoup
 import requests
 
