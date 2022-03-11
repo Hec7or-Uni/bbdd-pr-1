@@ -51,11 +51,11 @@ def getField(string: str, start, end) -> str:
             field = trim(string[start:end])
             # muestra los campos de PROMOCION y DESCENSO
             if field != "1ª" and field != "2ª" and start == 10 and end == 20: 
-                print(field)
+                # print(field)
                 field = CHANGE[field]
             # muestra los campos de JORNADA DE 
             if not field.isdigit() and start == 21 and end == 28: 
-                print(field)
+                # print(field)
                 field = CHANGE[field]
             return field
     except Exception as e:
