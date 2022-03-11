@@ -79,5 +79,14 @@ def guardarDatos(urls):
             f.write("¿¿¿???" + ";" + "¿¿¿???" + ";" + "¿¿¿???" + "\n")
     f.close()
 
-urls = cargarUrls()
-guardarDatos(urls)
+def main():
+    urls = cargarUrls()
+    guardarDatos(urls)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print(e)
+
+
