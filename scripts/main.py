@@ -7,6 +7,13 @@ CODE_FOLDER = "scripts/"
 SQL_FOLDER  = "sql/"
 ENTREGABLES_FOLDER  = "entregables/"
 
+CHANGE = {
+    "Promoción":"Promoción a 1ª",
+    "Descenso":"Descenso a 2ª",
+    "1ª/2ª": 0,
+    "2ª": 0,
+}
+
 def trim(txt: str) -> str:
     """
     Pre:  Recibe una string <txt>
@@ -35,8 +42,18 @@ def getField(string: str, start, end) -> str:
             return trim(string[start:])
         else:
             # Avisa de que hay datos que estan vacios
-            if string.isspace(): print("Se ha detectado un dato vacio")
-            return trim(string[start:end])
+            if string.isspace(): print("Se ha detectado un dato vacio") 
+            
+            field = trim(string[start:end])
+            # muestra los campos de PROMOCION y DESCENSO
+            if field != "1ª" and field != "2ª" and start == 10 and end == 20: 
+                print(field)
+                field = CHANGE[field]
+            # muestra los campos de JORNADA DE 
+            if not field.isdigit() and start == 21 and end == 28: 
+                print(field)
+                field = CHANGE[field]
+            return field
     except Exception as e:
         print(e)
 
@@ -54,7 +71,7 @@ def txt2tables(filename) -> None:
             lista = []
             for line in lines[3:]:
                 temporada = getField(line, start=0, end=10)
-                division  = getField(line, start=10, end=21)
+                division  = getField(line, start=10, end=20)
                 jornada   = getField(line, start=21, end=28)
                 local     = getField(line, start=28, end=45)
                 visitante = getField(line, start=45, end=61)

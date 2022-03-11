@@ -10395,9 +10395,9 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1986-1987,2ª,44,Barcelona B,Real Madrid B,2,3
 1986-1987,2ª,44,Oviedo,Cartagena F.C.,4,4
 1986-1987,2ª,44,Xerez,Figueres,4,1
-1986-1987,Descenso a,2ª,Rac. Santander,Cádiz,1,1
-1986-1987,Descenso a,2ª,Cádiz,Osasuna,1,1
-1986-1987,Descenso a,2ª,Osasuna,Rac. Santander,2,0
+1986-1987,Descenso a 2ª,0,Rac. Santander,Cádiz,1,1
+1986-1987,Descenso a 2ª,0,Cádiz,Osasuna,1,1
+1986-1987,Descenso a 2ª,0,Osasuna,Rac. Santander,2,0
 1987-1988,1ª,1,At. Madrid,Sabadell,1,0
 1987-1988,1ª,1,Ath. Bilbao,Mallorca,2,1
 1987-1988,1ª,1,Valencia,Logroñés,2,0
@@ -11158,10 +11158,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1987-1988,2ª,38,Cartagena F.C.,Elche,2,1
 1987-1988,2ª,38,Lleida,Oviedo,1,0
 1987-1988,2ª,38,Tenerife,Real Madrid B,0,0
-1987-1988,Promoción,1ª/2ª,Murcia,Rayo Vallecano,3,0
-1987-1988,Promoción,1ª/2ª,Rayo Vallecano,Murcia,1,1
-1987-1988,Promoción,1ª/2ª,Oviedo,Mallorca,2,1
-1987-1988,Promoción,1ª/2ª,Mallorca,Oviedo,0,0
+1987-1988,Promoción a 1ª,0,Murcia,Rayo Vallecano,3,0
+1987-1988,Promoción a 1ª,0,Rayo Vallecano,Murcia,1,1
+1987-1988,Promoción a 1ª,0,Oviedo,Mallorca,2,1
+1987-1988,Promoción a 1ª,0,Mallorca,Oviedo,0,0
 1988-1989,1ª,1,Ath. Bilbao,Sevilla,3,0
 1988-1989,1ª,1,Logroñés,At. Madrid,1,0
 1988-1989,1ª,1,Celta,Cádiz,3,2
@@ -11922,10 +11922,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1988-1989,2ª,38,Castellón,Real Madrid B,6,0
 1988-1989,2ª,38,Alzira,Burgos (Real),1,0
 1988-1989,2ª,38,Lleida,Mallorca,0,1
-1988-1989,Promoción,1ª/2ª,Espanyol,Mallorca,1,0
-1988-1989,Promoción,1ª/2ª,Mallorca,Espanyol,2,0
-1988-1989,Promoción,1ª/2ª,Tenerife,Betis,4,0
-1988-1989,Promoción,1ª/2ª,Betis,Tenerife,1,0
+1988-1989,Promoción a 1ª,0,Espanyol,Mallorca,1,0
+1988-1989,Promoción a 1ª,0,Mallorca,Espanyol,2,0
+1988-1989,Promoción a 1ª,0,Tenerife,Betis,4,0
+1988-1989,Promoción a 1ª,0,Betis,Tenerife,1,0
 1989-1990,1ª,1,Oviedo,Castellón,1,1
 1989-1990,1ª,1,Osasuna,Mallorca,1,0
 1989-1990,1ª,1,Valladolid,Barcelona,2,0
@@ -12686,10 +12686,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1989-1990,2ª,38,Dptivo. Coruña,Palamós,2,0
 1989-1990,2ª,38,Murcia,Xerez,2,0
 1989-1990,2ª,38,At. Madrid B,Levante,1,1
-1989-1990,Promoción,1ª/2ª,Tenerife,Dptivo. Coruña,0,0
-1989-1990,Promoción,1ª/2ª,Dptivo. Coruña,Tenerife,0,1
-1989-1990,Promoción,1ª/2ª,Espanyol,Málaga (C.D.),1,0
-1989-1990,Promoción,1ª/2ª,Málaga (C.D.),Espanyol,1,0
+1989-1990,Promoción a 1ª,0,Tenerife,Dptivo. Coruña,0,0
+1989-1990,Promoción a 1ª,0,Dptivo. Coruña,Tenerife,0,1
+1989-1990,Promoción a 1ª,0,Espanyol,Málaga (C.D.),1,0
+1989-1990,Promoción a 1ª,0,Málaga (C.D.),Espanyol,1,0
 1990-1991,1ª,1,Tenerife,Ath. Bilbao,1,0
 1990-1991,1ª,1,Valladolid,Osasuna,1,1
 1990-1991,1ª,1,Betis,Sporting Gijón,2,2
@@ -13450,10 +13450,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1990-1991,2ª,38,Orihuela,Celta,1,1
 1990-1991,2ª,38,Málaga (C.D.),Éibar,0,0
 1990-1991,2ª,38,Sestao,Xerez,4,1
-1990-1991,Promoción,1ª/2ª,Murcia,Zaragoza,0,0
-1990-1991,Promoción,1ª/2ª,Zaragoza,Murcia,5,2
-1990-1991,Promoción,1ª/2ª,Málaga (C.D.),Cádiz,1,0
-1990-1991,Promoción,1ª/2ª,Cádiz,Málaga (C.D.),1,0
+1990-1991,Promoción a 1ª,0,Murcia,Zaragoza,0,0
+1990-1991,Promoción a 1ª,0,Zaragoza,Murcia,5,2
+1990-1991,Promoción a 1ª,0,Málaga (C.D.),Cádiz,1,0
+1990-1991,Promoción a 1ª,0,Cádiz,Málaga (C.D.),1,0
 1991-1992,1ª,1,Ath. Bilbao,Sevilla,0,2
 1991-1992,1ª,1,Valladolid,Sporting Gijón,0,1
 1991-1992,1ª,1,Cádiz,Real Madrid,0,1
@@ -14214,10 +14214,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1991-1992,2ª,38,Murcia,Mérida,0,1
 1991-1992,2ª,38,Figueres,Sestao,2,0
 1991-1992,2ª,38,Rac. Santander,Éibar,0,2
-1991-1992,Promoción,1ª/2ª,Dptivo. Coruña,Betis,2,1
-1991-1992,Promoción,1ª/2ª,Betis,Dptivo. Coruña,0,0
-1991-1992,Promoción,1ª/2ª,Cádiz,Figueres,2,0
-1991-1992,Promoción,1ª/2ª,Figueres,Cádiz,1,1
+1991-1992,Promoción a 1ª,0,Dptivo. Coruña,Betis,2,1
+1991-1992,Promoción a 1ª,0,Betis,Dptivo. Coruña,0,0
+1991-1992,Promoción a 1ª,0,Cádiz,Figueres,2,0
+1991-1992,Promoción a 1ª,0,Figueres,Cádiz,1,1
 1992-1993,1ª,1,Zaragoza,Espanyol,2,1
 1992-1993,1ª,1,Ath. Bilbao,Cádiz,2,1
 1992-1993,1ª,1,Logroñés,Oviedo,1,0
@@ -14978,10 +14978,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1992-1993,2ª,38,Rac. Santander,Castellón,5,1
 1992-1993,2ª,38,Marbella,Sabadell,4,1
 1992-1993,2ª,38,Real Madrid B,Figueres,2,3
-1992-1993,Promoción,1ª/2ª,Espanyol,Rac. Santander,0,1
-1992-1993,Promoción,1ª/2ª,Rac. Santander,Espanyol,0,0
-1992-1993,Promoción,1ª/2ª,Mallorca,Albacete,1,3
-1992-1993,Promoción,1ª/2ª,Albacete,Mallorca,1,2
+1992-1993,Promoción a 1ª,0,Espanyol,Rac. Santander,0,1
+1992-1993,Promoción a 1ª,0,Rac. Santander,Espanyol,0,0
+1992-1993,Promoción a 1ª,0,Mallorca,Albacete,1,3
+1992-1993,Promoción a 1ª,0,Albacete,Mallorca,1,2
 1993-1994,1ª,1,Tenerife,Lleida,1,0
 1993-1994,1ª,1,Rac. Santander,Rayo Vallecano,1,0
 1993-1994,1ª,1,At. Madrid,Logroñés,1,0
@@ -15742,11 +15742,11 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1993-1994,2ª,38,Real Madrid B,Mérida,2,1
 1993-1994,2ª,38,Betis,Espanyol,2,1
 1993-1994,2ª,38,Éibar,Burgos (Real),3,0
-1993-1994,Promoción,1ª/2ª,Rayo Vallecano,Compostela,1,1
-1993-1994,Promoción,1ª/2ª,Compostela,Rayo Vallecano,0,0
-1993-1994,Promoción,1ª/2ª,Compostela,Rayo Vallecano,3,1
-1993-1994,Promoción,1ª/2ª,Toledo,Valladolid,1,0
-1993-1994,Promoción,1ª/2ª,Valladolid,Toledo,4,0
+1993-1994,Promoción a 1ª,0,Rayo Vallecano,Compostela,1,1
+1993-1994,Promoción a 1ª,0,Compostela,Rayo Vallecano,0,0
+1993-1994,Promoción a 1ª,0,Compostela,Rayo Vallecano,3,1
+1993-1994,Promoción a 1ª,0,Toledo,Valladolid,1,0
+1993-1994,Promoción a 1ª,0,Valladolid,Toledo,4,0
 1994-1995,1ª,1,At. Madrid,Valencia,2,4
 1994-1995,1ª,1,Zaragoza,Tenerife,2,2
 1994-1995,1ª,1,Compostela,Real Sociedad,0,2
@@ -16507,10 +16507,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1994-1995,2ª,38,Ourense,Éibar,2,1
 1994-1995,2ª,38,Toledo,Leganés,3,2
 1994-1995,2ª,38,Villarreal,Real Madrid B,0,0
-1994-1995,Promoción,1ª/2ª,Salamanca,Albacete,0,2
-1994-1995,Promoción,1ª/2ª,Albacete,Salamanca,0,5
-1994-1995,Promoción,1ª/2ª,Lleida,Sporting Gijón,2,2
-1994-1995,Promoción,1ª/2ª,Sporting Gijón,Lleida,3,2
+1994-1995,Promoción a 1ª,0,Salamanca,Albacete,0,2
+1994-1995,Promoción a 1ª,0,Albacete,Salamanca,0,5
+1994-1995,Promoción a 1ª,0,Lleida,Sporting Gijón,2,2
+1994-1995,Promoción a 1ª,0,Sporting Gijón,Lleida,3,2
 1995-1996,1ª,1,Rayo Vallecano,Real Madrid,1,5
 1995-1996,1ª,1,Zaragoza,Oviedo,1,0
 1995-1996,1ª,1,Mérida,Betis,1,1
@@ -17353,10 +17353,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1995-1996,2ª,38,Toledo,Logroñés,1,2
 1995-1996,2ª,38,Villarreal,Leganés,0,1
 1995-1996,2ª,38,Real Madrid B,Almería,1,1
-1995-1996,Promoción,1ª/2ª,Mallorca,Rayo Vallecano,1,0
-1995-1996,Promoción,1ª/2ª,Rayo Vallecano,Mallorca,2,0
-1995-1996,Promoción,1ª/2ª,Extremadura,Albacete,1,0
-1995-1996,Promoción,1ª/2ª,Albacete,Extremadura,0,1
+1995-1996,Promoción a 1ª,0,Mallorca,Rayo Vallecano,1,0
+1995-1996,Promoción a 1ª,0,Rayo Vallecano,Mallorca,2,0
+1995-1996,Promoción a 1ª,0,Extremadura,Albacete,1,0
+1995-1996,Promoción a 1ª,0,Albacete,Extremadura,0,1
 1996-1997,1ª,1,Tenerife,Compostela,6,0
 1996-1997,1ª,1,Zaragoza,Logroñés,2,2
 1996-1997,1ª,1,Real Sociedad,Sevilla,1,0
@@ -18199,8 +18199,8 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1996-1997,2ª,38,Almería,Ourense,2,3
 1996-1997,2ª,38,Leganés,Albacete,2,1
 1996-1997,2ª,38,Real Madrid B,Mérida,4,0
-1996-1997,Promoción,1ª/2ª,Mallorca,Rayo Vallecano,1,0
-1996-1997,Promoción,1ª/2ª,Rayo Vallecano,Mallorca,2,1
+1996-1997,Promoción a 1ª,0,Mallorca,Rayo Vallecano,1,0
+1996-1997,Promoción a 1ª,0,Rayo Vallecano,Mallorca,2,1
 1997-1998,1ª,1,Oviedo,Mérida,2,0
 1997-1998,1ª,1,Celta,Zaragoza,2,1
 1997-1998,1ª,1,Ath. Bilbao,Espanyol,1,3
@@ -19043,10 +19043,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1997-1998,2ª,42,Levante,Villarreal,1,2
 1997-1998,2ª,42,Osasuna,Rayo Vallecano,1,3
 1997-1998,2ª,42,Numancia,Hércules,0,0
-1997-1998,Promoción,1ª/2ª,Villarreal,Compostela,0,0
-1997-1998,Promoción,1ª/2ª,Compostela,Villarreal,1,1
-1997-1998,Promoción,1ª/2ª,Oviedo,Las Palmas,3,0
-1997-1998,Promoción,1ª/2ª,Las Palmas,Oviedo,3,1
+1997-1998,Promoción a 1ª,0,Villarreal,Compostela,0,0
+1997-1998,Promoción a 1ª,0,Compostela,Villarreal,1,1
+1997-1998,Promoción a 1ª,0,Oviedo,Las Palmas,3,0
+1997-1998,Promoción a 1ª,0,Las Palmas,Oviedo,3,1
 1998-1999,1ª,1,Real Sociedad,Oviedo,3,3
 1998-1999,1ª,1,Espanyol,Tenerife,2,1
 1998-1999,1ª,1,Salamanca,Mallorca,0,0
@@ -19889,10 +19889,10 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 1998-1999,2ª,42,Numancia,Rec. Huelva,3,0
 1998-1999,2ª,42,Compostela,Ourense,3,0
 1998-1999,2ª,42,Málaga,Sevilla,0,1
-1998-1999,Promoción,1ª/2ª,Villarreal,Sevilla,0,2
-1998-1999,Promoción,1ª/2ª,Sevilla,Villarreal,1,0
-1998-1999,Promoción,1ª/2ª,Extremadura,Rayo Vallecano,0,2
-1998-1999,Promoción,1ª/2ª,Rayo Vallecano,Extremadura,2,0
+1998-1999,Promoción a 1ª,0,Villarreal,Sevilla,0,2
+1998-1999,Promoción a 1ª,0,Sevilla,Villarreal,1,0
+1998-1999,Promoción a 1ª,0,Extremadura,Rayo Vallecano,0,2
+1998-1999,Promoción a 1ª,0,Rayo Vallecano,Extremadura,2,0
 1999-2000,1ª,1,At. Madrid,Rayo Vallecano,0,2
 1999-2000,1ª,1,Sevilla,Real Sociedad,2,2
 1999-2000,1ª,1,Oviedo,Celta,1,0
@@ -29997,12 +29997,12 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 2010-2011,2ª,42,Rayo Vallecano,Barcelona B,2,3
 2010-2011,2ª,42,Celta,Cartagena,3,0
 2010-2011,2ª,42,Elche,Xerez,4,1
-2010-2011,Promoción,1ª/2ª,Celta,Granada,1,0
-2010-2011,Promoción,1ª/2ª,Granada,Celta,1,0
-2010-2011,Promoción,1ª/2ª,Valladolid,Elche,1,0
-2010-2011,Promoción,1ª/2ª,Elche,Valladolid,3,1
-2010-2011,Promoción,1ª/2ª,Granada,Elche,0,0
-2010-2011,Promoción,1ª/2ª,Elche,Granada,1,1
+2010-2011,Promoción a 1ª,0,Celta,Granada,1,0
+2010-2011,Promoción a 1ª,0,Granada,Celta,1,0
+2010-2011,Promoción a 1ª,0,Valladolid,Elche,1,0
+2010-2011,Promoción a 1ª,0,Elche,Valladolid,3,1
+2010-2011,Promoción a 1ª,0,Granada,Elche,0,0
+2010-2011,Promoción a 1ª,0,Elche,Granada,1,1
 2011-2012,1ª,1,Osasuna,Valencia,1,1
 2011-2012,1ª,1,Real Sociedad,At. Madrid,0,4
 2011-2012,1ª,1,Villarreal,Sporting Gijón,3,0
@@ -30845,12 +30845,12 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 2011-2012,2ª,42,Huesca,Hércules,1,2
 2011-2012,2ª,42,Villarreal B,Dptivo. Coruña,0,1
 2011-2012,2ª,42,Rec. Huelva,Cartagena,1,2
-2011-2012,Promoción,1ª/2ª,Hércules,Alcorcón,1,1
-2011-2012,Promoción,1ª/2ª,Alcorcón,Hércules,0,0
-2011-2012,Promoción,1ª/2ª,Córdoba,Valladolid,0,0
-2011-2012,Promoción,1ª/2ª,Valladolid,Córdoba,3,0
-2011-2012,Promoción,1ª/2ª,Alcorcón,Valladolid,0,1
-2011-2012,Promoción,1ª/2ª,Valladolid,Alcorcón,1,1
+2011-2012,Promoción a 1ª,0,Hércules,Alcorcón,1,1
+2011-2012,Promoción a 1ª,0,Alcorcón,Hércules,0,0
+2011-2012,Promoción a 1ª,0,Córdoba,Valladolid,0,0
+2011-2012,Promoción a 1ª,0,Valladolid,Córdoba,3,0
+2011-2012,Promoción a 1ª,0,Alcorcón,Valladolid,0,1
+2011-2012,Promoción a 1ª,0,Valladolid,Alcorcón,1,1
 2012-2013,1ª,1,Ath. Bilbao,Betis,3,5
 2012-2013,1ª,1,Levante,At. Madrid,1,1
 2012-2013,1ª,1,Zaragoza,Valladolid,0,1
@@ -31693,12 +31693,12 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 2012-2013,2ª,42,Girona,Real Madrid B,1,1
 2012-2013,2ª,42,Villarreal,Almería,1,0
 2012-2013,2ª,42,Xerez,Barcelona B,2,1
-2012-2013,Promoción,1ª/2ª,Alcorcón,Girona,1,1
-2012-2013,Promoción,1ª/2ª,Girona,Alcorcón,3,1
-2012-2013,Promoción,1ª/2ª,Las Palmas,Almería,1,1
-2012-2013,Promoción,1ª/2ª,Almería,Las Palmas,2,1
-2012-2013,Promoción,1ª/2ª,Girona,Almería,0,1
-2012-2013,Promoción,1ª/2ª,Almería,Girona,3,0
+2012-2013,Promoción a 1ª,0,Alcorcón,Girona,1,1
+2012-2013,Promoción a 1ª,0,Girona,Alcorcón,3,1
+2012-2013,Promoción a 1ª,0,Las Palmas,Almería,1,1
+2012-2013,Promoción a 1ª,0,Almería,Las Palmas,2,1
+2012-2013,Promoción a 1ª,0,Girona,Almería,0,1
+2012-2013,Promoción a 1ª,0,Almería,Girona,3,0
 2013-2014,1ª,1,Celta,Espanyol,2,2
 2013-2014,1ª,1,Real Madrid,Betis,2,1
 2013-2014,1ª,1,Osasuna,Granada,1,2
@@ -32541,12 +32541,12 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 2013-2014,2ª,42,Alcorcón,Zaragoza,1,0
 2013-2014,2ª,42,Hércules,Barcelona B,1,2
 2013-2014,2ª,42,Lugo,Mirandés,1,0
-2013-2014,Promoción,1ª/2ª,Córdoba,Murcia,0,0
-2013-2014,Promoción,1ª/2ª,Murcia,Córdoba,1,2
-2013-2014,Promoción,1ª/2ª,Las Palmas,Sporting Gijón,1,0
-2013-2014,Promoción,1ª/2ª,Sporting Gijón,Las Palmas,0,1
-2013-2014,Promoción,1ª/2ª,Córdoba,Las Palmas,0,0
-2013-2014,Promoción,1ª/2ª,Las Palmas,Córdoba,1,1
+2013-2014,Promoción a 1ª,0,Córdoba,Murcia,0,0
+2013-2014,Promoción a 1ª,0,Murcia,Córdoba,1,2
+2013-2014,Promoción a 1ª,0,Las Palmas,Sporting Gijón,1,0
+2013-2014,Promoción a 1ª,0,Sporting Gijón,Las Palmas,0,1
+2013-2014,Promoción a 1ª,0,Córdoba,Las Palmas,0,0
+2013-2014,Promoción a 1ª,0,Las Palmas,Córdoba,1,1
 2014-2015,1ª,1,Sevilla,Valencia,1,1
 2014-2015,1ª,1,Almería,Espanyol,1,1
 2014-2015,1ª,1,Celta,Getafe,3,1
@@ -33389,12 +33389,12 @@ TEMPORADA,DIVISION,JORNADA,LOCAL,VISITANTE,GL,GV
 2014-2015,2ª,42,Leganés,Zaragoza,2,2
 2014-2015,2ª,42,Rec. Huelva,Barcelona B,2,0
 2014-2015,2ª,42,Sabadell,Osasuna,2,2
-2014-2015,Promoción,1ª/2ª,Valladolid,Las Palmas,1,1
-2014-2015,Promoción,1ª/2ª,Las Palmas,Valladolid,0,0
-2014-2015,Promoción,1ª/2ª,Zaragoza,Girona,0,3
-2014-2015,Promoción,1ª/2ª,Girona,Zaragoza,1,4
-2014-2015,Promoción,1ª/2ª,Zaragoza,Las Palmas,3,1
-2014-2015,Promoción,1ª/2ª,Las Palmas,Zaragoza,2,0
+2014-2015,Promoción a 1ª,0,Valladolid,Las Palmas,1,1
+2014-2015,Promoción a 1ª,0,Las Palmas,Valladolid,0,0
+2014-2015,Promoción a 1ª,0,Zaragoza,Girona,0,3
+2014-2015,Promoción a 1ª,0,Girona,Zaragoza,1,4
+2014-2015,Promoción a 1ª,0,Zaragoza,Las Palmas,3,1
+2014-2015,Promoción a 1ª,0,Las Palmas,Zaragoza,2,0
 2015-2016,1ª,1,Levante,Celta,1,2
 2015-2016,1ª,1,At. Madrid,Las Palmas,1,0
 2015-2016,1ª,1,Málaga,Sevilla,0,0
