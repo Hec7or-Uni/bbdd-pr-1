@@ -3,8 +3,7 @@ CREATE TABLE estadios (
     capacidad           NUMBER  	NOT NULL,
     fechaInauguracion   VARCHAR2(100)   NOT NULL,
     CONSTRAINT pk_Es_nombre         PRIMARY KEY (nombre),
-    CONSTRAINT ck_capacidad         CHECK (capacidad >= 0),
-    CONSTRAINT ck_fechaInauguracion CHECK (fechaInauguracion >= 1582)
+    CONSTRAINT ck_capacidad         CHECK (capacidad >= 0)
 );
 
 CREATE TABLE equipos (
