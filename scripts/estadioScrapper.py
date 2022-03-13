@@ -63,8 +63,17 @@ def cargarUrls(estadios):
         campos[7] = campos[7].replace("\n","")
         campos[5] = campos[5].replace("\n","")
         if campos[7] not in urls:
-            urls.append(campos[7])
             estadios.append(campos[5])
+            urls.append(campos[7])
+    f.close()
+    f = open("dataEqManual.csv", "r", encoding="utf-8")
+    for linea in f:
+        campos = linea.split(";")
+        campos[7] = campos[7].replace("\n","")
+        campos[5] = campos[5].replace("\n","")
+        if campos[7] not in urls:
+            estadios.append(campos[5])
+            urls.append(campos[7])
     f.close()
     return urls
 

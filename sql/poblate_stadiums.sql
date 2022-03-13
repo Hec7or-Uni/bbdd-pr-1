@@ -75,3 +75,14 @@ INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('O Couto',56
 INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Antonio Franco Navarro',2058,'1976');
 INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Estadio Fco. Artés Carrasco',812,'6 de marzo de 2003');
 INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Municipal de Sto. Domingo',787,'2001');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Estadio Municipal de Linarejos',1000,'15 de agosto de 1956');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Estadio de Santa Bárbara',0,'null');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Nuevo La Balastera',810,'10 de octubre de 2006');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Estadio Luis Suñer Picó',0,'null');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Campo Municipal de Deportes de Mollerusa - Mollerusa - Lérida - España',0,'null');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Los Arcos',0,'null');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Estadio Municipal Antonio Lorenzo Cuevas',70,'1975');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Salto del Caballo',0,'null');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('San Pablo',350,'1986');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Estadio La Victoria',0,'null');
+INSERT INTO estadios (nombre, capacidad, fechaInauguracion) VALUES ('Municipal de Vecindario',600,'1987');

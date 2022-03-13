@@ -8,7 +8,7 @@ CREATE TABLE estadios (
 
 CREATE TABLE equipos (
     nombreCorto     VARCHAR2(100),
-    nombreOficial   VARCHAR2(100)   NOT NULL    UNIQUE,
+    nombreOficial   VARCHAR2(100)   NOT NULL,
     nombreHistorico VARCHAR2(100),
     ciudad          VARCHAR2(100)   NOT NULL,
     fechaFundacion  NUMBER          NOT NULL,

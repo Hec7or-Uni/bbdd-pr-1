@@ -100,6 +100,8 @@ def obtenerInformacion(equipos):
                 estadio = estadio.replace("\"","")
                 enlaceEquipo = enlaceEquipo.replace("\n","")
                 enlaceEstadio = enlaceEstadio.replace("\n","")
+                nombreHistorico = nombreHistorico.replace("\'","")
+                nombre = nombre.replace("\'"," ")
                 auxiliar = True
                 for el in equipo.split():
                     # print(el)
@@ -118,7 +120,6 @@ def obtenerInformacion(equipos):
     table = soup.find_all("table")
     table = table[1]
     rows = table.find_all("tr")
-    print(equiposSinParsear)
     for nombEQUIPO in equiposSinParsear:
         equipo = nombEQUIPO
         if equipo == "Almería (A.D.)":
@@ -149,6 +150,8 @@ def obtenerInformacion(equipos):
                 estadio = estadio.replace("\"","")
                 enlaceEquipo = enlaceEquipo.replace("\n","")
                 enlaceEstadio = enlaceEstadio.replace("\n","")
+                nombreHistorico = nombreHistorico.replace("\'","")
+                nombre = nombre.replace("\'"," ")
                 auxiliar = True
                 for el in equipo.split():
                     # print(el)
