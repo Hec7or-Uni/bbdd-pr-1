@@ -47,7 +47,8 @@ CREATE TABLE partidos (
     CONSTRAINT fk_visitante FOREIGN KEY (visitante) REFERENCES equipos (nombreCorto),
     CONSTRAINT fk_jornada   FOREIGN KEY (division, temporada, numJornada) REFERENCES jornadas (division, temporada, numJornada),
     CONSTRAINT ck_golesLocal        CHECK (golesLocal >= 0),
-    CONSTRAINT ck_golesVisitante    CHECK (golesVisitante >= 0)
+    CONSTRAINT ck_golesVisitante    CHECK (golesVisitante >= 0),
+    CONSTRAINT ck_distEquipo        CHECK (local <> visitante)
 );
 
 CREATE TABLE resultados (
