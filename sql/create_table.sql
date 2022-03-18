@@ -31,7 +31,7 @@ CREATE TABLE jornadas (
     numJornada  NUMBER,
     CONSTRAINT pk_Eq_super      PRIMARY KEY (division, temporada, numJornada),
     CONSTRAINT ck_temporada     CHECK (temporada >= 1972),
-    CONSTRAINT ck_numJornada    CHECK (numJornada >= 1)
+    CONSTRAINT ck_numJornada    CHECK (numJornada >= 0)
 );
 
 CREATE TABLE partidos (
