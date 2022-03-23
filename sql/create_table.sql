@@ -57,6 +57,7 @@ CREATE TABLE resultados (
     golesAF             NUMBER,
     golesEC             NUMBER,
     partidosGanados     NUMBER,
+    partidosEmpatados   NUMBER,
     partidosPerdidos    NUMBER,
     asciende            NUMBER,
     desciende           NUMBER,
@@ -76,5 +77,6 @@ CREATE TABLE resultados (
     CONSTRAINT ck_golesAF   CHECK (golesAF >= 0),
     CONSTRAINT ck_golesEC   CHECK (golesEC >= 0),
     CONSTRAINT ck_partidosGanados   CHECK (partidosGanados >= 0),
+    CONSTRAINT ck_partidosEmpatados CHECK (partidosEmpatados >= 0),
     CONSTRAINT ck_partidosPerdidos  CHECK (partidosPerdidos >= 0)
 );
