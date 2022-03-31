@@ -42,7 +42,7 @@ ORDER BY T1.temporada;
 -- CONSULTA 3:
 -- Equipo(s) y temporada(s) donde dicho equipo ha ganado dicha temporada,
 -- habiendo perdido todos los partidos
-contra el equipo que quedó en segunda posición.
+--contra el equipo que quedó en segunda posición.
 SELECT C.equipo, C.temporada
 FROM (
     SELECT COUNT(*) as veces, R.temporada, R.division
