@@ -27,3 +27,21 @@ BEGIN
     END IF;
 END;
 /
+
+
+-- TRIGGER 3:
+CREATE OR REPLACE TRIGGER OK_ASC_DES_EU
+BEFORE INSERT ON resultados
+FOR EACH ROW
+BEGIN
+    IF (:NEW.asciende = 1 AND :NEW.desciende = 1) THEN 
+        RAISE_APPLICATION_ERROR (-20002, 'Un equipo no puede ascender y descender simultáneamente.');
+    ELSIF (:NEW.asciende = 1 AND :NEW.europa = 1) THEN
+        RAISE_APPLICATION_ERROR (-20003, 'Un equipo no puede ascender e ir a europa simultáneamente.');
+    ELSIF (:NEW.division = '2ª' AND (:NEW.desciende = 1 OR :NEW.europa = 1)) THEN
+        RAISE_APPLICATION_ERROR (-20004, 'Un equipo de segunda división no puede ni descender, ni ir a europa.');
+    ELSIF (:NEW.division = '1ª' AND :NEW.asciende = 1) THEN
+        RAISE_APPLICATION_ERROR (-20005, 'Un equipo de primera división no puede ascender.');
+    END IF;
+END;
+/
