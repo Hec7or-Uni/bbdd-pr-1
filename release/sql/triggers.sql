@@ -27,3 +27,15 @@ BEGIN
     END IF;
 END;
 /
+
+-- TRIGGER 3:
+-- AÑADIR ALGUNA CONDICION MÁS DE INETGRIDAD (ASCIENDE - EUROPA)
+CREATE OR REPLACE TRIGGER OK_ASC_DES
+BEFORE INSERT ON resultados
+FOR EACH ROW
+BEGIN
+    IF (:NEW.asciende = 1 AND :NEW.desciende = 1) THEN 
+        RAISE_APPLICATION_ERROR (-20002, 'Un equipo no puede ascender y descender simultaneamente.');
+    END IF;
+END;
+/

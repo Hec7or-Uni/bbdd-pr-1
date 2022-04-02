@@ -1,7 +1,7 @@
 -- CONSULTA 1:
 -- Equipos que han estado en primera división un mínimo de 
 -- cinco temporadas y que no han ganado ninguna liga
-SELECT equipo
+SELECT DISTINCT equipo
 FROM resultados
 WHERE equipo NOT IN (
     -- Equipos que han ganado al menos una liga
@@ -10,7 +10,7 @@ WHERE equipo NOT IN (
     WHERE puesto = 1
 ) AND equipo IN (
     -- Equipos que han estado en primera al menos 5 temporadas
-    SELECT equipo 
+    SELECT equipo
     FROM (
         SELECT count(*) AS veces, equipo
         FROM resultados
@@ -19,7 +19,6 @@ WHERE equipo NOT IN (
     ) A
     WHERE A.veces >= 5
 )
-GROUP BY equipo
 ORDER BY equipo;
 
 -- CONSULTA 2:
@@ -27,7 +26,7 @@ ORDER BY equipo;
 -- ha ganado más partidos que el ganador de primera división
 SELECT T1.temporada
 FROM resultados T1
-WHERE T1.division =  '2ª' AND T1.puesto = 1
+WHERE T1.division = '2ª' AND T1.puesto = 1
     AND EXISTS (
     -- devuelve una "tupla"/"flag" cuando se cumple que el ganador de segunda
     -- ha ganado mas partidos que el de primera / temporada
@@ -41,8 +40,7 @@ ORDER BY T1.temporada;
 
 -- CONSULTA 3:
 -- Equipo(s) y temporada(s) donde dicho equipo ha ganado dicha temporada,
--- habiendo perdido todos los partidos
-contra el equipo que quedó en segunda posición.
+-- habiendo perdido todos los partidos contra el equipo que quedó en segunda posición.
 SELECT C.equipo, C.temporada
 FROM (
     SELECT COUNT(*) as veces, R.temporada, R.division
