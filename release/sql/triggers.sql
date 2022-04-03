@@ -44,3 +44,5 @@ BEGIN
     END IF;
 END;
 /
+
+-- hacer la suma de partidos gan per emp y comparar con el count de partidos de <jor tem div>
