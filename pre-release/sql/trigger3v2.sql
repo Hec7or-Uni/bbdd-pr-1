@@ -8,17 +8,19 @@ COMPOUND TRIGGER
     ganaLocal           NUMBER;
     ganaVisitante       NUMBER;
     empate              NUMBER;
+    existeParLocA       NUMBER;
+    existeParVisA       NUMBER;
+    existeResLoc        NUMBER;
+    existeResVis        NUMBER;
 
     -- Garantiza una insercion de los partidos en orden
     BEFORE EACH ROW IS
     BEGIN
-        IF  :NEW.numJornada <> 1 
-            AND 
-            -- El partido que juega local en la jornada anterior no existe
-            NOT (1 = (SELECT 1 FROM partido WHERE equipo = :NEW.local AND temporada = :NEW.temporada AND division = :NEW.division AND numJornada = :NEW.numJornada - 1))
-            OR 
-            -- El partido que juega visitante en la jornada anterior no existe
-            NOT (1 = (SELECT 1 FROM partido WHERE equipo = :NEW.visitante AND temporada = :NEW.temporada AND division = :NEW.division AND numJornada = :NEW.numJornada - 1))
+        -- El partido que juega local en la jornada anterior no existe
+        SELECT COUNT(*) INTO existeParLocA FROM partidos WHERE (local = :NEW.local OR visitante = :NEW.local)  AND temporada = :NEW.temporada AND division = :NEW.division AND numJornada = :NEW.numJornada - 1;
+        -- El partido que juega visitante en la jornada anterior no existe
+        SELECT COUNT(*) INTO  existeParVisA FROM partidos WHERE (local = :NEW.visitante OR visitante = :NEW.visitante) AND temporada = :NEW.temporada AND division = :NEW.division AND numJornada = :NEW.numJornada - 1;
+        IF  :NEW.numJornada <> 1 AND NOT (1 <= existeParLocA) OR NOT (1 <= existeParVisA)
         THEN 
             RAISE_APPLICATION_ERROR (-20003, 'Esta tupla esta siendo insertada antes de lo que deberia');
         END IF;
@@ -58,13 +60,13 @@ COMPOUND TRIGGER
             ganaVisitante := 0;
             empate := 1;
         END IF;
+       
+        -- si existe un resultado para el equipo local
+        SELECT 1 INTO existeResLoc FROM resultados WHERE equipo = :NEW.local AND temporada = :NEW.temporada AND division = :NEW.division;
+        -- si existe un resultado para el equipo local
+        SELECT 1 INTO existeResVis FROM resultados WHERE equipo = :NEW.visitante AND temporada = :NEW.temporada AND division = :NEW.division;
         
-        IF -- si existe un resultado para el equipo local
-            (1 = (SELECT 1 FROM resultados WHERE equipo = :NEW.local AND temporada = :NEW.temporada AND division = :NEW.division)) 
-            AND
-            -- si existe un resultado para el equipo local
-            (1 = (SELECT 1 FROM resultados WHERE equipo = :NEW.visitante AND temporada = :NEW.temporada AND division = :NEW.division))
-        THEN
+        IF (1 = existeResLoc AND 1 = existeResVis) THEN
             -- Actualiza los resultados del equipo local
             UPDATE RESULTADOS 
             SET 
@@ -101,22 +103,32 @@ COMPOUND TRIGGER
         
         -- Zona para recalcular los puestos y ascensos
         -- Consulta que calcula los datos buenos a usar con un update para actualizar la parte de la tabla que nos interese...
-        -- SELECT ROW_NUMBER() OVER (ORDER BY puntos DESC) AS puesto, R1.partidosGanados, R1.partidosEmpatados, R1.partidosPerdidos, R1.golesAF, R1.golesEC, R1.puntos, R1.equipo, R1.division, R1.temporada, R1.numJornada, 
-        --     CASE
-        --         WHEN puesto <= 3 AND division = '2ª' THEN 1
-        --     END AS asciende,
-        --     CASE
-        --         WHEN puesto  >= R2.numEquipos - 1 AND division = '1ª' THEN 1
-        --     END AS desciende,
-        --     CASE
-        --         WHEN puesto <= 5 AND division = '1ª' THEN 1
-        --     END AS europa
-        -- FROM resultados R1, (
-        --     SELECT COUNT(*) AS numEquipos
-        --     FROM resultados
-        --     WHERE temporada = :NEW.temporada AND division = :NEW.division
-        -- ) R2
-        -- WHERE temporada = :NEW.temporada AND division = :NEW.division
-        -- ORDER BY division, puesto;
+        MERGE INTO resultados
+        USING (
+            SELECT ROW_NUMBER() OVER (ORDER BY puntos DESC) AS puesto, R1.partidosGanados, R1.partidosEmpatados, R1.partidosPerdidos, R1.golesAF, R1.golesEC, R1.puntos, R1.equipo, R1.division, R1.temporada, R1.numJornada, 
+            CASE
+                WHEN puesto <= 3 AND division = '2ª' THEN 1
+            END AS asciende,
+            CASE
+                WHEN puesto  >= R2.numEquipos - 1 AND division = '1ª' THEN 1
+            END AS desciende,
+            CASE
+                WHEN puesto <= 5 AND division = '1ª' THEN 1
+            END AS europa
+            FROM resultados R1, (
+                SELECT COUNT(*) AS numEquipos
+                FROM resultados
+                WHERE temporada = :NEW.temporada AND division = :NEW.division
+            ) R2
+            WHERE R1.temporada = :NEW.temporada AND R1.division = :NEW.division
+            ORDER BY R1.division, R1.puesto
+        ) N 
+        ON (resultados.equipo = N.equipo AND resultados.temporada = :NEW.temporada AND resultados.numJornada = :NEW.numJornada AND resultados.division = :NEW.division)
+        WHEN MATCHED THEN UPDATE
+        SET 
+            resultados.puesto   = N.puesto,
+            resultados.asciende = N.asciende,
+            resultados.desciende= N.desciende,
+            resultados.europa   = N.europa;
     END AFTER EACH ROW;
 END UPT_RESULTADOS;
