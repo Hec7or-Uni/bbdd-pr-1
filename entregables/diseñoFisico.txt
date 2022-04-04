@@ -1,0 +1,379 @@
+-- CONSULTA 1 - FISICO
+Plan hash value: 3580348342
+ 
+-----------------------------------------------------------------------------------------
+| Id  | Operation                  | Name       | Rows  | Bytes | Cost (%CPU)| Time     |
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT           |            | 14966 |  2893K|    20  (15)| 00:00:01 |
+|   1 |  SORT ORDER BY             |            | 14966 |  2893K|    20  (15)| 00:00:01 |
+|   2 |   HASH UNIQUE              |            | 14966 |  2893K|    20  (15)| 00:00:01 |
+|*  3 |    FILTER                  |            |       |       |            |          |
+|   4 |     HASH GROUP BY          |            | 14966 |  2893K|    20  (15)| 00:00:01 |
+|*  5 |      HASH JOIN             |            | 14966 |  2893K|    17   (0)| 00:00:01 |
+|*  6 |       INDEX FAST FULL SCAN | PK_R_SUPER |   854 | 58926 |     5   (0)| 00:00:01 |
+|*  7 |       HASH JOIN RIGHT ANTI |            |  1805 |   227K|    12   (0)| 00:00:01 |
+|*  8 |        TABLE ACCESS FULL   | RESULTADOS |    88 |  5720 |     7   (0)| 00:00:01 |
+|   9 |        INDEX FAST FULL SCAN| PK_R_SUPER |  1805 |   112K|     5   (0)| 00:00:01 |
+-----------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   3 - filter(COUNT(*)>=5)
+   5 - access("EQUIPO"="EQUIPO")
+   6 - filter("DIVISION"='1ª')
+   7 - access("EQUIPO"="EQUIPO")
+   8 - filter("PUESTO"=1)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+Plan hash value: 3580348342
+ 
+-----------------------------------------------------------------------------------------
+| Id  | Operation                  | Name       | Rows  | Bytes | Cost (%CPU)| Time     |
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT           |            | 14966 |  2893K|    20  (15)| 00:00:01 |
+|   1 |  SORT ORDER BY             |            | 14966 |  2893K|    20  (15)| 00:00:01 |
+|   2 |   HASH UNIQUE              |            | 14966 |  2893K|    20  (15)| 00:00:01 |
+|*  3 |    FILTER                  |            |       |       |            |          |
+|   4 |     HASH GROUP BY          |            | 14966 |  2893K|    20  (15)| 00:00:01 |
+|*  5 |      HASH JOIN             |            | 14966 |  2893K|    17   (0)| 00:00:01 |
+|*  6 |       INDEX FAST FULL SCAN | PK_R_SUPER |   854 | 58926 |     5   (0)| 00:00:01 |
+|*  7 |       HASH JOIN RIGHT ANTI |            |  1805 |   227K|    12   (0)| 00:00:01 |
+|*  8 |        TABLE ACCESS FULL   | RESULTADOS |    88 |  5720 |     7   (0)| 00:00:01 |
+|   9 |        INDEX FAST FULL SCAN| PK_R_SUPER |  1805 |   112K|     5   (0)| 00:00:01 |
+-----------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   3 - filter(COUNT(*)>=5)
+   5 - access("EQUIPO"="EQUIPO")
+   6 - filter("DIVISION"='1ª')
+   7 - access("EQUIPO"="EQUIPO")
+   8 - filter("PUESTO"=1)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+
+
+
+CREATE INDEX puesto ON resultados(puesto);
+
+
+Plan hash value: 255761640
+
+---------------------------------------------------------------------------------------------------
+| Id  | Operation                | Name                   | Rows  | Bytes | Cost (%CPU)| Time     |
+---------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT         |                        |   683 |   121K|    17  (12)| 00:00:01 |
+|   1 |  SORT ORDER BY           |                        |   683 |   121K|    17  (12)| 00:00:01 |
+|   2 |   HASH UNIQUE            |                        |   683 |   121K|    16   (7)| 00:00:01 |
+|*  3 |    HASH JOIN RIGHT ANTI  |                        |   683 |   121K|    15   (0)| 00:00:01 |
+|*  4 |     TABLE ACCESS FULL    | RESULTADOS             |    88 |  5720 |     7   (0)| 00:00:01 |
+|*  5 |     HASH JOIN            |                        |   683 | 79911 |     8   (0)| 00:00:01 |
+|*  6 |      MAT_VIEW ACCESS FULL| RESULTADOS_PRIMERA_CUT |    39 |  2535 |     3   (0)| 00:00:01 |
+|   7 |      INDEX FAST FULL SCAN| PK_R_SUPER             |  1805 | 93860 |     5   (0)| 00:00:01 |
+---------------------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   3 - access("EQUIPO"="EQUIPO")
+   4 - filter("PUESTO"=1)
+   5 - access("EQUIPO"="EQUIPO")
+   6 - filter("A"."VECES">=5)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+   - this is an adaptive plan
+
+
+CREATE MATERIALIZED VIEW resultados_primera_cut AS
+SELECT count(*) AS veces, equipo
+FROM resultados
+WHERE division = '1ª'
+GROUP BY equipo;
+
+
+SELECT DISTINCT equipo
+FROM resultados
+WHERE equipo NOT IN (
+    -- Equipos que han ganado al menos una liga
+    SELECT DISTINCT equipo
+    FROM resultados
+    WHERE puesto = 1
+) AND equipo IN (
+    -- Equipos que han estado en primera al menos 5 temporadas
+    SELECT equipo
+    FROM resultados_primera_cut A
+    WHERE A.veces >= 5
+)
+ORDER BY equipo;
+
+
+
+
+-- CONSULTA 2 - FISICO
+Plan hash value: 372246669
+ 
+----------------------------------------------------------------------------------
+| Id  | Operation           | Name       | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT    |            |     2 |   224 |    15   (7)| 00:00:01 |
+|   1 |  SORT ORDER BY      |            |     2 |   224 |    15   (7)| 00:00:01 |
+|*  2 |   HASH JOIN SEMI    |            |     2 |   224 |    14   (0)| 00:00:01 |
+|*  3 |    TABLE ACCESS FULL| RESULTADOS |    43 |  2408 |     7   (0)| 00:00:01 |
+|*  4 |    TABLE ACCESS FULL| RESULTADOS |    45 |  2520 |     7   (0)| 00:00:01 |
+----------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   2 - access("T2"."TEMPORADA"="T1"."TEMPORADA")
+       filter("T1"."PARTIDOSGANADOS">"T2"."PARTIDOSGANADOS")
+   3 - filter("T1"."DIVISION"='2ª' AND "T1"."PUESTO"=1 AND 
+              "T1"."PARTIDOSGANADOS">0)
+   4 - filter("T2"."DIVISION"='1ª' AND "T2"."PUESTO"=1)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+Plan hash value: 372246669
+ 
+----------------------------------------------------------------------------------
+| Id  | Operation           | Name       | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT    |            |     2 |   224 |    15   (7)| 00:00:01 |
+|   1 |  SORT ORDER BY      |            |     2 |   224 |    15   (7)| 00:00:01 |
+|*  2 |   HASH JOIN SEMI    |            |     2 |   224 |    14   (0)| 00:00:01 |
+|*  3 |    TABLE ACCESS FULL| RESULTADOS |    43 |  2408 |     7   (0)| 00:00:01 |
+|*  4 |    TABLE ACCESS FULL| RESULTADOS |    45 |  2520 |     7   (0)| 00:00:01 |
+----------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   2 - access("T2"."TEMPORADA"="T1"."TEMPORADA")
+       filter("T1"."PARTIDOSGANADOS">"T2"."PARTIDOSGANADOS")
+   3 - filter("T1"."DIVISION"='2ª' AND "T1"."PUESTO"=1 AND 
+              "T1"."PARTIDOSGANADOS">0)
+   4 - filter("T2"."DIVISION"='1ª' AND "T2"."PUESTO"=1)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+
+CREATE INDEX aux ON resultados(puesto, partidosGanados);
+
+Plan hash value: 492715311
+ 
+--------------------------------------------------------------------------------------------
+| Id  | Operation              | Name              | Rows  | Bytes | Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT       |                   |     2 |   104 |     7  (15)| 00:00:01 |
+|   1 |  SORT ORDER BY         |                   |     2 |   104 |     7  (15)| 00:00:01 |
+|*  2 |   HASH JOIN SEMI       |                   |     2 |   104 |     6   (0)| 00:00:01 |
+|   3 |    MAT_VIEW ACCESS FULL| GANADORES_SEGUNDA |    43 |  1118 |     3   (0)| 00:00:01 |
+|   4 |    MAT_VIEW ACCESS FULL| GANADORES_PRIMERA |    45 |  1170 |     3   (0)| 00:00:01 |
+--------------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   2 - access("T2"."TEMPORADA"="T1"."TEMPORADA")
+       filter("T1"."PARTIDOSGANADOS">"T2"."PARTIDOSGANADOS")
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+
+CREATE MATERIALIZED VIEW ganadores_primera AS
+SELECT partidosGanados, equipo, temporada
+FROM resultados
+WHERE division = '1ª' AND puesto = 1;
+
+CREATE MATERIALIZED VIEW ganadores_segunda AS
+SELECT partidosGanados, equipo, temporada
+FROM resultados
+WHERE division = '2ª' AND puesto = 1;
+
+
+
+
+-- CONSULTA 3 - FISICO
+
+Plan hash value: 1599312009
+ 
+-----------------------------------------------------------------------------------------
+| Id  | Operation                  | Name       | Rows  | Bytes | Cost (%CPU)| Time     |
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT           |            |     1 |   181 |   175   (3)| 00:00:01 |
+|   1 |  SORT ORDER BY             |            |     1 |   181 |   175   (3)| 00:00:01 |
+|*  2 |   HASH JOIN                |            |     1 |   181 |   174   (2)| 00:00:01 |
+|*  3 |    HASH JOIN               |            |     1 |    86 |   167   (2)| 00:00:01 |
+|   4 |     VIEW                   |            |     1 |    43 |    83   (2)| 00:00:01 |
+|   5 |      HASH GROUP BY         |            |     1 |     4 |    83   (2)| 00:00:01 |
+|   6 |       VIEW                 | VM_NWVW_2  |     1 |     4 |    83   (2)| 00:00:01 |
+|   7 |        HASH UNIQUE         |            |     1 |   349 |    83   (2)| 00:00:01 |
+|*  8 |         HASH JOIN          |            |     1 |   349 |    82   (0)| 00:00:01 |
+|*  9 |          HASH JOIN         |            |   112 | 22736 |    14   (0)| 00:00:01 |
+|* 10 |           TABLE ACCESS FULL| RESULTADOS |    88 |  9504 |     7   (0)| 00:00:01 |
+|* 11 |           TABLE ACCESS FULL| RESULTADOS |    88 |  8360 |     7   (0)| 00:00:01 |
+|  12 |          TABLE ACCESS FULL | PARTIDOS   | 29997 |  4276K|    68   (0)| 00:00:01 |
+|  13 |     VIEW                   |            |     1 |    43 |    83   (2)| 00:00:01 |
+|  14 |      HASH GROUP BY         |            |     1 |    30 |    83   (2)| 00:00:01 |
+|  15 |       VIEW                 | VM_NWVW_1  |     1 |    30 |    83   (2)| 00:00:01 |
+|  16 |        HASH UNIQUE         |            |     1 |   375 |    83   (2)| 00:00:01 |
+|* 17 |         HASH JOIN          |            |     1 |   375 |    82   (0)| 00:00:01 |
+|* 18 |          HASH JOIN         |            |   112 | 22736 |    14   (0)| 00:00:01 |
+|* 19 |           TABLE ACCESS FULL| RESULTADOS |    88 |  9504 |     7   (0)| 00:00:01 |
+|* 20 |           TABLE ACCESS FULL| RESULTADOS |    88 |  8360 |     7   (0)| 00:00:01 |
+|  21 |          TABLE ACCESS FULL | PARTIDOS   | 29997 |  5038K|    68   (0)| 00:00:01 |
+|* 22 |    TABLE ACCESS FULL       | RESULTADOS |    88 |  8360 |     7   (0)| 00:00:01 |
+-----------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   2 - access("A"."TEMPORADA"="C"."TEMPORADA" AND "A"."DIVISION"="C"."DIVISION")
+   3 - access("A"."VECES"="B"."VECES" AND "A"."TEMPORADA"="B"."TEMPORADA" AND 
+              "A"."DIVISION"="B"."DIVISION")
+   8 - access("P"."DIVISION"="A"."DIVISION" AND "P"."TEMPORADA"="A"."TEMPORADA")
+       filter("P"."LOCAL"="A"."EQUIPO" AND "P"."VISITANTE"="B"."EQUIPO" OR 
+              "P"."LOCAL"="B"."EQUIPO" AND "P"."VISITANTE"="A"."EQUIPO")
+   9 - access("A"."DIVISION"="B"."DIVISION" AND "A"."TEMPORADA"="B"."TEMPORADA")
+  10 - filter("A"."PUESTO"=1)
+  11 - filter("B"."PUESTO"=2)
+  17 - access("P"."DIVISION"="A"."DIVISION" AND "P"."TEMPORADA"="A"."TEMPORADA")
+       filter("P"."LOCAL"="A"."EQUIPO" AND "P"."VISITANTE"="B"."EQUIPO" AND 
+              "P"."GOLESLOCAL"<"P"."GOLESVISITANTE" OR "P"."LOCAL"="B"."EQUIPO" AND 
+              "P"."VISITANTE"="A"."EQUIPO" AND "P"."GOLESLOCAL">"P"."GOLESVISITANTE")
+  18 - access("A"."DIVISION"="B"."DIVISION" AND "A"."TEMPORADA"="B"."TEMPORADA")
+  19 - filter("A"."PUESTO"=1)
+  20 - filter("B"."PUESTO"=2)
+  22 - filter("PUESTO"=1)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+
+
+Plan hash value: 1599312009
+ 
+-----------------------------------------------------------------------------------------
+| Id  | Operation                  | Name       | Rows  | Bytes | Cost (%CPU)| Time     |
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT           |            |     1 |   181 |   175   (3)| 00:00:01 |
+|   1 |  SORT ORDER BY             |            |     1 |   181 |   175   (3)| 00:00:01 |
+|*  2 |   HASH JOIN                |            |     1 |   181 |   174   (2)| 00:00:01 |
+|*  3 |    HASH JOIN               |            |     1 |    86 |   167   (2)| 00:00:01 |
+|   4 |     VIEW                   |            |     1 |    43 |    83   (2)| 00:00:01 |
+|   5 |      HASH GROUP BY         |            |     1 |     4 |    83   (2)| 00:00:01 |
+|   6 |       VIEW                 | VM_NWVW_2  |     1 |     4 |    83   (2)| 00:00:01 |
+|   7 |        HASH UNIQUE         |            |     1 |   349 |    83   (2)| 00:00:01 |
+|*  8 |         HASH JOIN          |            |     1 |   349 |    82   (0)| 00:00:01 |
+|*  9 |          HASH JOIN         |            |   112 | 22736 |    14   (0)| 00:00:01 |
+|* 10 |           TABLE ACCESS FULL| RESULTADOS |    88 |  9504 |     7   (0)| 00:00:01 |
+|* 11 |           TABLE ACCESS FULL| RESULTADOS |    88 |  8360 |     7   (0)| 00:00:01 |
+|  12 |          TABLE ACCESS FULL | PARTIDOS   | 29997 |  4276K|    68   (0)| 00:00:01 |
+|  13 |     VIEW                   |            |     1 |    43 |    83   (2)| 00:00:01 |
+|  14 |      HASH GROUP BY         |            |     1 |    30 |    83   (2)| 00:00:01 |
+|  15 |       VIEW                 | VM_NWVW_1  |     1 |    30 |    83   (2)| 00:00:01 |
+|  16 |        HASH UNIQUE         |            |     1 |   375 |    83   (2)| 00:00:01 |
+|* 17 |         HASH JOIN          |            |     1 |   375 |    82   (0)| 00:00:01 |
+|* 18 |          HASH JOIN         |            |   112 | 22736 |    14   (0)| 00:00:01 |
+|* 19 |           TABLE ACCESS FULL| RESULTADOS |    88 |  9504 |     7   (0)| 00:00:01 |
+|* 20 |           TABLE ACCESS FULL| RESULTADOS |    88 |  8360 |     7   (0)| 00:00:01 |
+|  21 |          TABLE ACCESS FULL | PARTIDOS   | 29997 |  5038K|    68   (0)| 00:00:01 |
+|* 22 |    TABLE ACCESS FULL       | RESULTADOS |    88 |  8360 |     7   (0)| 00:00:01 |
+-----------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   2 - access("A"."TEMPORADA"="C"."TEMPORADA" AND "A"."DIVISION"="C"."DIVISION")
+   3 - access("A"."VECES"="B"."VECES" AND "A"."TEMPORADA"="B"."TEMPORADA" AND 
+              "A"."DIVISION"="B"."DIVISION")
+   8 - access("P"."DIVISION"="A"."DIVISION" AND "P"."TEMPORADA"="A"."TEMPORADA")
+       filter("P"."LOCAL"="A"."EQUIPO" AND "P"."VISITANTE"="B"."EQUIPO" OR 
+              "P"."LOCAL"="B"."EQUIPO" AND "P"."VISITANTE"="A"."EQUIPO")
+   9 - access("A"."DIVISION"="B"."DIVISION" AND "A"."TEMPORADA"="B"."TEMPORADA")
+  10 - filter("A"."PUESTO"=1)
+  11 - filter("B"."PUESTO"=2)
+  17 - access("P"."DIVISION"="A"."DIVISION" AND "P"."TEMPORADA"="A"."TEMPORADA")
+       filter("P"."LOCAL"="A"."EQUIPO" AND "P"."VISITANTE"="B"."EQUIPO" AND 
+              "P"."GOLESLOCAL"<"P"."GOLESVISITANTE" OR "P"."LOCAL"="B"."EQUIPO" AND 
+              "P"."VISITANTE"="A"."EQUIPO" AND "P"."GOLESLOCAL">"P"."GOLESVISITANTE")
+  18 - access("A"."DIVISION"="B"."DIVISION" AND "A"."TEMPORADA"="B"."TEMPORADA")
+  19 - filter("A"."PUESTO"=1)
+  20 - filter("B"."PUESTO"=2)
+  22 - filter("PUESTO"=1)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+
+
+CREATE INDEX res ON resultados(puesto);
+CREATE INDEX par ON partidos(golesLocal, golesVisitante);
+
+
+Plan hash value: 1113769685
+ 
+--------------------------------------------------------------------------------------------
+| Id  | Operation                 | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT          |                |     1 |   181 |    14  (22)| 00:00:01 |
+|   1 |  SORT ORDER BY            |                |     1 |   181 |    14  (22)| 00:00:01 |
+|*  2 |   HASH JOIN               |                |     1 |   181 |    13  (16)| 00:00:01 |
+|*  3 |    HASH JOIN              |                |     1 |    86 |     8  (25)| 00:00:01 |
+|   4 |     VIEW                  |                |    56 |  2408 |     4  (25)| 00:00:01 |
+|   5 |      HASH GROUP BY        |                |    56 | 14784 |     4  (25)| 00:00:01 |
+|*  6 |       MAT_VIEW ACCESS FULL| PARTIDOS_1VS2  |    56 | 14784 |     3   (0)| 00:00:01 |
+|   7 |     VIEW                  |                |   175 |  7525 |     4  (25)| 00:00:01 |
+|   8 |      HASH GROUP BY        |                |   175 |  5250 |     4  (25)| 00:00:01 |
+|   9 |       MAT_VIEW ACCESS FULL| PARTIDOS_1VS2  |   175 |  5250 |     3   (0)| 00:00:01 |
+|* 10 |    MAT_VIEW ACCESS FULL   | RESULTADOS_ALL |    88 |  8360 |     5   (0)| 00:00:01 |
+--------------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   2 - access("A"."TEMPORADA"="C"."TEMPORADA" AND "A"."DIVISION"="C"."DIVISION")
+   3 - access("A"."TEMPORADA"="B"."TEMPORADA" AND "A"."DIVISION"="B"."DIVISION" AND 
+              "A"."VECES"="B"."VECES")
+   6 - filter("LOCAL"="CAMPEON" AND "VISITANTE"="SUBCAMPEON" AND 
+              "GOLESLOCAL"<"GOLESVISITANTE" OR "LOCAL"="SUBCAMPEON" AND "VISITANTE"="CAMPEON" AND 
+              "GOLESVISITANTE"<"GOLESLOCAL")
+  10 - filter("PUESTO"=1)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+
+CREATE MATERIALIZED VIEW resultados_all AS
+SELECT puesto, partidosGanados, equipo, division, temporada
+FROM resultados;
+
+
+CREATE MATERIALIZED VIEW partidos_1vs2 AS
+SELECT P.goleslocal, P.golesvisitante, P.local, P.visitante, R.puesto_1, R.campeon, R.puesto_2, R.subcampeon, R.temporada, R.division, P.numJornada
+FROM partidos P, ( 
+    SELECT DISTINCT A.puesto AS puesto_1, A.equipo AS campeon, B.puesto AS puesto_2, B.equipo AS subcampeon, A.temporada, A.division, A.numJornada
+    FROM resultados A, resultados B 
+    WHERE A.puesto = 1 AND B.puesto = 2 AND A.division = B.division AND A.temporada = B.temporada
+) R
+WHERE ((P.local = R.campeon AND P.visitante = R.subcampeon) OR (P.local = R.subcampeon AND P.visitante = R.campeon)) AND 
+    R.division = P.division AND R.temporada = P.temporada;

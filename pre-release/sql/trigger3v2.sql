@@ -17,9 +17,17 @@ COMPOUND TRIGGER
     BEFORE EACH ROW IS
     BEGIN
         -- El partido que juega local en la jornada anterior no existe
-        SELECT COUNT(*) INTO existeParLocA FROM partidos WHERE (local = :NEW.local OR visitante = :NEW.local)  AND temporada = :NEW.temporada AND division = :NEW.division AND numJornada = :NEW.numJornada - 1;
+        SELECT COUNT(*) INTO existeParLocA 
+        FROM partidos 
+        WHERE (local = :NEW.local OR visitante = :NEW.local)  AND 
+            temporada = :NEW.temporada AND division = :NEW.division AND numJornada = :NEW.numJornada - 1;
+            
         -- El partido que juega visitante en la jornada anterior no existe
-        SELECT COUNT(*) INTO  existeParVisA FROM partidos WHERE (local = :NEW.visitante OR visitante = :NEW.visitante) AND temporada = :NEW.temporada AND division = :NEW.division AND numJornada = :NEW.numJornada - 1;
+        SELECT COUNT(*) INTO  existeParVisA 
+        FROM partidos 
+        WHERE (local = :NEW.visitante OR visitante = :NEW.visitante) AND 
+        temporada = :NEW.temporada AND division = :NEW.division AND numJornada = :NEW.numJornada - 1;
+
         IF  :NEW.numJornada <> 1 AND NOT (1 <= existeParLocA) OR NOT (1 <= existeParVisA)
         THEN 
             RAISE_APPLICATION_ERROR (-20003, 'Esta tupla esta siendo insertada antes de lo que deberia');
@@ -62,11 +70,11 @@ COMPOUND TRIGGER
         END IF;
        
         -- si existe un resultado para el equipo local
-        SELECT 1 INTO existeResLoc FROM resultados WHERE equipo = :NEW.local AND temporada = :NEW.temporada AND division = :NEW.division;
+        SELECT COUNT(*) INTO existeResLoc FROM resultados WHERE equipo = :NEW.local AND temporada = :NEW.temporada AND division = :NEW.division;
         -- si existe un resultado para el equipo local
-        SELECT 1 INTO existeResVis FROM resultados WHERE equipo = :NEW.visitante AND temporada = :NEW.temporada AND division = :NEW.division;
+        SELECT COUNT(*) INTO existeResVis FROM resultados WHERE equipo = :NEW.visitante AND temporada = :NEW.temporada AND division = :NEW.division;
         
-        IF (1 = existeResLoc AND 1 = existeResVis) THEN
+        IF (1 >= existeResLoc AND 1 >= existeResVis) THEN
             -- Actualiza los resultados del equipo local
             UPDATE RESULTADOS 
             SET 

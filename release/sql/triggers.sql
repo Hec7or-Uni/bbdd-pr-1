@@ -47,23 +47,24 @@ END;
 
 -- Asegura que el número de partidos cuadre.
 -- TRIGGER 2:
-CREATE OR REPLACE TRIGGER SUM_PAR_OK
-BEFORE INSERT ON resultados
-FOR EACH ROW
-DECLARE 
-    partidosRES NUMBER;
-    partidosPAR NUMBER;
-BEGIN
-    partidosRES := :NEW.partidosGanados + :NEW.partidosEmpatados + :NEW.partidosPerdidos;
-    SELECT COUNT(*) INTO partidosPAR FROM partidos WHERE (:NEW.equipo = local OR :NEW.equipo = visitante) AND temporada = :NEW.temporada AND division = :NEW.division AND numJornada <= :NEW.numJornada;
+-- CREATE OR REPLACE TRIGGER SUM_PAR_OK
+-- BEFORE INSERT ON resultados
+-- FOR EACH ROW
+-- DECLARE 
+--     partidosRES NUMBER;
+--     partidosPAR NUMBER;
+-- BEGIN
+--     partidosRES := :NEW.partidosGanados + :NEW.partidosEmpatados + :NEW.partidosPerdidos;
+--     SELECT COUNT(*) INTO partidosPAR FROM partidos WHERE (:NEW.equipo = local OR :NEW.equipo = visitante) AND temporada = :NEW.temporada AND division = :NEW.division AND numJornada <= :NEW.numJornada;
     
-    IF NOT partidosRES = partidosPAR
-    THEN
-        RAISE_APPLICATION_ERROR (-20002, 'El número total de partidos jugados por el equipo, no cuadra con el número introducido en los resultados');
-    END IF;
-END;
-/
+--     IF NOT partidosRES = partidosPAR
+--     THEN
+--         RAISE_APPLICATION_ERROR (-20002, 'El número total de partidos jugados por el equipo, no cuadra con el número introducido en los resultados');
+--     END IF;
+-- END;
+-- /
 
+-- TRIGGER 2:
 CREATE OR REPLACE TRIGGER DATES_OK
 BEFORE INSERT ON resultados
 FOR EACH ROW
