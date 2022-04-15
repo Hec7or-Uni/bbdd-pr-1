@@ -109,7 +109,7 @@ COMPOUND TRIGGER
         -- si existe un resultado para el equipo local
         SELECT COUNT(*) INTO existeResVis FROM resultados WHERE equipo = :NEW.visitante AND temporada = :NEW.temporada AND division = :NEW.division;
         
-        IF (1 >= existeResLoc AND 1 >= existeResVis) THEN
+        IF (1 <= existeResLoc AND 1 <= existeResVis) THEN
             -- Actualiza los resultados del equipo local
             UPDATE RESULTADOS 
             SET 
